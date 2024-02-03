@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage movies</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<a class="h3" th:href="@{/}"><img src="/door_exit.png" alt="Home" width="48px" height="48px"></a>
+<div class="container-fluid text-center">
+  <div><h2>Manage movies</h2></div>
+  <div class="m-2">
+    <a class="h3" th:href="@{/movies/new}">Add new movie</a>
+  </div>
+
+  <div th:if="${message}" class="alert alert-success text-center">
+      [[${message}]]
+  </div>
+
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Release country</th>
+        <th>Release date</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each="movie : ${listMovies}">
+        <tr>
+          <td>[[${movie.idmovie}]]</td>
+          <td>[[${movie.name_movie}]]</td>
+          <td>[[${movie.release_country}]]</td>
+          <td>[[${movie.release_date}]]</td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/movies/edit/' + ${movie.idmovie}}">Edit</a>
+            <a class="h4 mr-3" th:href="@{'/movies/delete/' + ${movie.idmovie}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

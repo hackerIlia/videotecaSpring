@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Videoteca</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <style>
+        body{
+            background-color: #ecddac;
+        }
+        .flex{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        #top{
+            margin-top: 150px;
+        }
+        .el{
+            display: flex;
+            flex-direction: column;
+        }
+        .big{
+            width: 500px;
+            height: 350px;
+        }
+        h2{
+            margin: auto;
+        }
+        .rot{
+            animation-name: rotateimg;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-duration: 3s;
+            animation-direction: normal;
+        }
+        @keyframes rotateimg {
+            from{
+                rotate: 0deg;
+            }
+            to{
+                rotate: 180deg;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid text-center">
+        <div class="flex">
+            <img class="rot" th:src="@{/cinema.png}" width="58px" height="58px">
+            <h1>Welcome to videoteca application!</h1>
+            <img class="rot" th:src="@{/cinema.png}" width="58px" height="58px">
+        </div>
+        <div class="flex" id="top">
+            <div class="el">
+                <h2>Manage movies</h2>
+                <a class="h2" th:href="@{/data}"><img class="big" th:src="@{/movies.jpg}" alt="movies.jpg"/></a><br>
+            </div>
+            <div class="el">
+                <h2>Manage actors</h2>
+                <a class="h2" th:href="@{/actor}"><img class="big" th:src="@{/actor.jpg}" alt="actor.jpg"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
